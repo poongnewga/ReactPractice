@@ -9,8 +9,12 @@ app.get('/', (req,res) => {
   res.send({hi: 'there'});
 });
 
-// listen at port 5000
-app.listen(5000);
+
+// Dynamic Port Binding using
+// environment variable on HEROKU
+// If there is no ENV, use 5000.
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
 
 
 
