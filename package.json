@@ -1,0 +1,22 @@
+{
+  "name": "reactprac",
+  "version": "1.0.0",
+  "description": "Practice for React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poongnewga/ReactPractice.git"
+  },
+  "author": "Hee Jae Chae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poongnewga/ReactPractice/issues"
+  },
+  "homepage": "https://github.com/poongnewga/ReactPractice#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
