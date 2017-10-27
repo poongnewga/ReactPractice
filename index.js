@@ -6,7 +6,7 @@ const app = express();
 // Make Route handler - Node 8 support Arrow Func.
 app.get('/', (req,res) => {
   // respond with a simple JSON
-  res.send({hi: 'there'});
+  res.send({bye: 'buddy'});
 });
 
 
