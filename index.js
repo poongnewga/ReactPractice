@@ -4,15 +4,27 @@ const express = require('express');
 // import Passport for Google OAuth
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+// import Keys
+const keys = require('./config/keys');
+
+
 
 const app = express();
 
 // Seperate Keys
 // clientID =
 // clientSecret =
- 
+
 // Set Strategy
-passport.use(new GoogleStrategy());
+passport.use(new GoogleStrategy({
+    clientID: keys.googleClientID,
+    clientSecret: keys.googleClientSecret,
+    callbackURL: "/auth/google/callback",
+  },
+  (accessToken) => {
+    console.log(accessToken);
+  }
+));
 
 
 // // Make Route handler - Node 8 support Arrow Func.
@@ -21,6 +33,10 @@ passport.use(new GoogleStrategy());
 //   res.send({bye: 'buddy'});
 // });
 
+
+app.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}));
 
 
 
