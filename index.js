@@ -11,7 +11,7 @@ const keys = require('./config/keys');
 
 const app = express();
 
-// Seperate Keys
+// Seperate Keys - config/keys.js
 // clientID =
 // clientSecret =
 
