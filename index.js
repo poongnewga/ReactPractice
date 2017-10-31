@@ -38,6 +38,8 @@ app.get('/auth/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 
+// use 'code' from google server
+app.get('/auth/google/callback', passport.authenticate('google'));
 
 
 // Dynamic Port Binding using
