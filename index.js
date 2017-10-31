@@ -21,7 +21,8 @@ passport.use(new GoogleStrategy({
     clientSecret: keys.googleClientSecret,
     callbackURL: "/auth/google/callback",
   },
-  (accessToken) => {
+  // There are 4 data from Google.
+  (accessToken, refreshToken, profile, done) => {
     console.log(accessToken);
   }
 ));
