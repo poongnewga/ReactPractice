@@ -1,9 +1,14 @@
 // commonJS - Node.js support commonJS
 // cf. React support ES2015 import module
 const express = require('express');
+// mongoose for mongodb
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
 
 // import source code from another file.
 require('./services/passport');
+
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 // import function from another file and call immediately.
