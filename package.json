@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/poongnewga/ReactPractice#readme",
   "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
     "mongoose": "^4.12.6",
     "nodemon": "^1.12.1",
