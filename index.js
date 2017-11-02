@@ -22,7 +22,7 @@ app.use(
     // set Expire duration - 30days
     maxAge: 30 * 24 * 60 * 60 * 1000,
     // use for cookie encryption. Should be Array
-    keys: [keys.coockieKey]
+    keys: [keys.cookieKey]
   })
 );
 

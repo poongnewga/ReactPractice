@@ -11,13 +11,14 @@ const keys = require('../config/keys');
 const User = mongoose.model('users');
 
 passport.serializeUser((user, done) => {
+  console.log("SERIALIZE!!");
   // MongoID shortcut, not googleID
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id)
-    .then(user => {
+  console.log("DESERIALIZE!!");
+  User.findById(id).then(user => {
       done(null, user);
     })
 });

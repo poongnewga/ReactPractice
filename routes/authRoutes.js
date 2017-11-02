@@ -14,4 +14,12 @@ module.exports = app => {
 
   // use 'code' from google server
   app.get('/auth/google/callback', passport.authenticate('google'));
+
+  app.get('/api/current_user', (req,res) => {
+    // After Deserialize Cookie,
+    // User model instance would be added to req obj as req.user
+    res.send(req.user);
+    console.log(req.user);
+  });
+
 };
