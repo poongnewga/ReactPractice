@@ -5,8 +5,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
+require('./model/User');
 // import source code from another file.
 require('./services/passport');
+
+
 
 mongoose.connect(keys.mongoURI);
 
