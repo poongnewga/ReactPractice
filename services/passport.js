@@ -9,6 +9,19 @@ const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
 const User = mongoose.model('users');
+
+passport.serializeUser((user, done) => {
+  // MongoID shortcut, not googleID
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+    .then(user => {
+      done(null, user);
+    })
+});
+
 // Set Strategy
 passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
@@ -17,14 +30,18 @@ passport.use(new GoogleStrategy({
   },
   // There are 4 data from Google.
   (accessToken, refreshToken, profile, done) => {
+    // Check Existing ID
     User.findOne({ googleId: profile.id })
         .then((existUser) => {
           if (existUser) {
-            console.log('yes');
+            // console.log('yes');
+            done(null, existUser);
           } else {
-            console.log('no');
+            // console.log('no');
             // Add new User
-            new User({googleId: profile.id}).save();
+            new User({googleId: profile.id})
+              .save()
+              .then(user => done(null, user));
           }
         });
   }
