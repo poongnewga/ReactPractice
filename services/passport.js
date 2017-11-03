@@ -31,20 +31,19 @@ passport.use(new GoogleStrategy({
     proxy: true
   },
   // There are 4 data from Google.
-  (accessToken, refreshToken, profile, done) => {
+  async (accessToken, refreshToken, profile, done) => {
     // Check Existing ID
-    User.findOne({ googleId: profile.id })
-        .then((existUser) => {
-          if (existUser) {
-            // console.log('yes');
-            done(null, existUser);
-          } else {
-            // console.log('no');
-            // Add new User
-            new User({googleId: profile.id})
-              .save()
-              .then(user => done(null, user));
-          }
-        });
+    const existUser = await User.findOne({ googleId: profile.id });
+
+    if (existUser) {
+      // console.log('yes');
+      return done(null, existUser);
+    }
+
+    // console.log('no');
+    // Add new User
+    const user = await new User({googleId: profile.id}).save();
+    done(null, user);
+    
   }
 ));
