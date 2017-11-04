@@ -33,6 +33,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth2": "^0.1.6",
     "passport-google-oauth20": "^1.0.0",
+    "react-stripe-checkout": "^2.6.3",
     "redux-thunk": "^2.2.0"
   }
 }
