@@ -11,13 +11,13 @@ const keys = require('../config/keys');
 const User = mongoose.model('users');
 
 passport.serializeUser((user, done) => {
-  console.log("SERIALIZE!!");
+  // console.log("SERIALIZE!!");
   // MongoID shortcut, not googleID
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  console.log("DESERIALIZE!!");
+  // console.log("DESERIALIZE!!");
   User.findById(id).then(user => {
       done(null, user);
     })
@@ -44,6 +44,6 @@ passport.use(new GoogleStrategy({
     // Add new User
     const user = await new User({googleId: profile.id}).save();
     done(null, user);
-    
+
   }
 ));
