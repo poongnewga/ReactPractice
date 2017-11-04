@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
 require('./model/User');
@@ -16,6 +17,9 @@ require('./services/passport');
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+
+// Use body-parser middleware
+app.use(bodyParser.json());
 
 app.use(
   cookieSession({
@@ -33,6 +37,7 @@ app.use(passport.session());
 
 // import function from another file and call immediately.
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 // Dynamic Port Binding using
 // environment variable on HEROKU
