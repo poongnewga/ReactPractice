@@ -7,5 +7,5 @@
 
 개발 완료 : 
 - Google OAuth 구현 완료
-- Stripe 결제 구현 완료
+- Stripe 결제 구현 완료(계정 활성화 필요)
 - Heroku 디플로이 완료
